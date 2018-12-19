@@ -26,12 +26,12 @@ return [
             "password" => "",
             'keyPrefix' => '',
         ),
-        demoDB => [
+        'demoDB' => [
             'dsn' => '',
             'username' => '',
             'password' => '',
         ];
-        pearDB => [
+        'pearDB' => [
             'dsn' => '',
             'username' => '',
             'password' => '',
@@ -53,7 +53,7 @@ return [
     ],
     'params' => [],
     "ConfigService" => [
-        "filePath" => "data/config/dev/",
+        "filePath" => "/data/config/dev/",
         "fileExt" => "json",
     ]
 ];
@@ -79,11 +79,12 @@ $config = yii\helpers\ArrayHelper::merge(
     require __DIR__ . '/../config/main-local.php'
 );
 
-$server_config = peachpear\pearLeaf\ConfigService::getInstance($config['ConfigService']['filePath'], $config['ConfigService']['fileExt'])
-    ->loadJson($config)
-    ->getConfig();
+$$configService = peachpear\pearLeaf\ConfigService::getInstance($config['ConfigService']['filePath'], $config['ConfigService']['fileExt']);
+$configService->loadJson($config);
+$server_config = $configService->getConfig();
     
 $config = yii\helpers\ArrayHelper::merge($config, $server_config);
+unset($config['ConfigService']);
 
 (new yii\web\Application($config))->run();
 ```

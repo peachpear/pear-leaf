@@ -105,17 +105,28 @@ class ConfigService
      */
     public function loadJson($config = null)
     {
-        if (file_exists($this->fullName)) {
+        if (file_exists($this->getFullName())) {
             $jsonData = file_get_contents($this->fullName);
             if ($jsonData) {
                 // 存在数据
-                $this->config = $this->handleData(json_decode($jsonData, true), $config);
+                $server_config = $this->handleData(json_decode($jsonData, true), $config);
+
+                $this->setConfig($server_config);
             }
         }
     }
 
     /**
-     * 获取参数
+     * 设置配置参数
+     * @param $config
+     */
+    public function setConfig( $config = [] )
+    {
+        $this->config = $config;
+    }
+
+    /**
+     * 获取配置参数
      * @return array
      */
     public function getConfig()
