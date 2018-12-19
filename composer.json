@@ -1,0 +1,17 @@
+{
+    "name": "peachpear/pear-leaf",
+    "description": "project's setting leaf on linux",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "baiyang",
+            "email": "zhuyingu@126.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "peachpear\\pearLeaf\\": "src/pearLeaf"
+        }
+    }
+}
