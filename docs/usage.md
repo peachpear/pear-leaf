@@ -79,7 +79,7 @@ $config = yii\helpers\ArrayHelper::merge(
     require __DIR__ . '/../config/main-local.php'
 );
 
-$$configService = peachpear\pearLeaf\ConfigService::getInstance($config['ConfigService']['filePath'], $config['ConfigService']['fileExt']);
+$configService = peachpear\pearLeaf\ConfigService::getInstance($config['ConfigService']['filePath'], $config['ConfigService']['fileExt']);
 $configService->loadJson($config);
 $server_config = $configService->getConfig();
     
