@@ -1,7 +1,8 @@
 {
     "name": "peachpear/pear-leaf",
     "description": "project's setting leaf on linux",
-    "license": "MIT",
+    "keywords": ["pear", "leaf", "peachpear"],
+    "license": "MPL-2.0",
     "authors": [
         {
             "name": "baiyang",
