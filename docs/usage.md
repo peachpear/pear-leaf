@@ -2,7 +2,7 @@
 但是应用怎么读取这些信息呢，所以有了这个package：旨在独立与整合应用配置参数，使项目更安全。
 
 
-在入口文件index.php定义应用名称：
+在入口文件index.php定义应用名称（建议写在config配置文件中）：
 ```
 defined('APP_NAME') or define('APP_NAME', 'demo');
 ```
