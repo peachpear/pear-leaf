@@ -27,11 +27,15 @@ return [
             'keyPrefix' => '',
         ),
         'demoDB' => [
+            'class' => '\yii\db\Connection',
+            'charset' => 'utf8',
             'dsn' => '',
             'username' => '',
             'password' => '',
         ];
         'pearDB' => [
+            'class' => '\yii\db\Connection',
+            'charset' => 'utf8',
             'dsn' => '',
             'username' => '',
             'password' => '',
@@ -64,6 +68,7 @@ backend/web/index.php：
 ```
 <?php
 defined('APP_NAME') or define('APP_NAME', 'demo');
+defined('VERSION') or define('VERSION', '*');
 defined('YII_DEBUG') or define('YII_DEBUG', true);
 defined('YII_ENV') or define('YII_ENV', 'dev');
 
