@@ -56,7 +56,7 @@ return [
         ),
     ],
     'params' => [],
-    "ConfigService" => [
+    "configService" => [
         "filePath" => "/data/config/dev/",
         "fileExt" => "json",
     ]
@@ -84,12 +84,12 @@ $config = yii\helpers\ArrayHelper::merge(
     require __DIR__ . '/../config/main-local.php'
 );
 
-$configService = peachpear\pearLeaf\ConfigService::getInstance($config['ConfigService']['filePath'], $config['ConfigService']['fileExt']);
+$configService = peachpear\pearLeaf\ConfigService::getInstance($config['configService']['filePath'], $config['configService']['fileExt']);
 $configService->loadJson($config);
 $server_config = $configService->getConfig();
     
 $config = yii\helpers\ArrayHelper::merge($config, $server_config);
-unset($config['ConfigService']);
+unset($config['configService']);
 
 (new yii\web\Application($config))->run();
 ```
