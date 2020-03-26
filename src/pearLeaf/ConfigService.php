@@ -277,9 +277,8 @@ class ConfigService
                 {
                     foreach ($vv as $kkk => $vvv)
                     {
-                        // 是否有可用的匹配版本配置
+                        // 检查version版本号，要么为*,要么是项目配置的版本号，如果不是，跳过本次循环,
                         if (!$this->matchVersion($vvv)){
-                            // 如果无可用版本参数，跳过本次循环
                             continue;
                         }
 
