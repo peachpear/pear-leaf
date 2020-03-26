@@ -76,7 +76,15 @@
       {
         "database":0,
         "host":"test.redis.demo.com",
-        "port":6379
+        "port":6379,
+        "version":"*"
+      },
+      {
+        "database":0,
+        "host":"test.redis.demo.com",
+        "port":6379,
+        "keyPrefix":"abc.",
+        "version":["2.0.1","2.0.2"]
       }
     ]
   },

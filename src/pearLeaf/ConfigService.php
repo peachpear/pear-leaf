@@ -243,8 +243,8 @@ class ConfigService
     }
 
     /**
-     * @param $config
-     * @param null $oldConfig
+     * @param $config    服务器上的配置参数
+     * @param null $oldConfig  项目配置参数
      * @return array|null
      */
     private function handleData($config, $oldConfig = null)
@@ -258,8 +258,10 @@ class ConfigService
         {
             foreach ($v as $kk => $vv )
             {
+                // 针对版本排序，*版本优先，其他具体版本维持现状
                 uasort($vv, array($this, "versionSort"));
-                $config[$k][$kk] = array_merge($vv);  // array_merge重新索引键名
+                // 重新索引键名，array_merge 数组键名以 0 开始进行重新索引
+                $config[$k][$kk] = array_merge($vv);
             }
         }
 
@@ -277,11 +279,13 @@ class ConfigService
                     {
                         // 是否有可用的匹配版本配置
                         if (!$this->matchVersion($vvv)){
-                            continue;  // 如果无，跳过本次循环
+                            // 如果无可用版本参数，跳过本次循环
+                            continue;
                         }
 
                         if ($key == "mysql") {
                             $mysqlKey = $this->getMysqlKey($vvv);
+                            // 项目配置参数中无此数据库参数则跳过本次循环
                             if (!isset($oldConfig["components"][$mysqlKey])) {
                                 continue;
                             }
@@ -352,7 +356,7 @@ class ConfigService
     }
 
     /**
-     * 针对version倒序
+     * 针对version倒序，*版本优先，其他具体版本维持现状
      * @param $a
      * @param $b
      * @return int
